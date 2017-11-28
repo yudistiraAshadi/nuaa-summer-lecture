@@ -37,6 +37,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
+        // Register admin/CRUD routes
+      	$this->mapAdminRoutes();
+
         $this->mapWebRoutes();
 
         //
@@ -55,6 +58,21 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
     }
+
+    /**
+     * Define the "admin / CRUD" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::middleware(['web', 'admin'])
+             ->prefix(config('backpack.base.route_prefix'))
+             ->namespace($this->namespace.'\Admin')
+             ->group(base_path('routes/admin.php'));
+    } 
 
     /**
      * Define the "api" routes for the application.
