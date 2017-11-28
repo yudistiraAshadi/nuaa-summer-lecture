@@ -25,7 +25,7 @@ class PermissionAndRoleSeeder extends Seeder
         $roles = DB::table('roles')->get()->slice(2);
 
         // Seed 'role_users' pivot table
-        for ( $i = 1; $i <= $totalUsers; $i++ ) {
+        for ( $i = 2; $i <= $totalUsers; $i++ ) {
             $randomRole = $roles->random();
 
             DB::table('role_users')->insert([

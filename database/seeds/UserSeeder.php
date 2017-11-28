@@ -22,6 +22,6 @@ class UserSeeder extends Seeder
         ]);
 
         // Create other users
-        factory(App\Models\User::class, 50)->create();      
+        factory(App\Models\User::class, 49)->create();      
     }
 }
